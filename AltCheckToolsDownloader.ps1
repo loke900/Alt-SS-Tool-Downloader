@@ -20,7 +20,7 @@ $headers = @{
 $files = @{
     "Everything-Setup.exe" = "https://www.voidtools.com/Everything-1.4.1.1030.x86-Setup.exe"
     "SystemInformer-Canary.exe" = "https://github.com/winsiderss/si-builds/releases/download/3.2.25297.1516/systeminformer-build-canary-setup.exe"
-    "FTK-Imager.exe" = "https://d1kpmuwb7gvu1i.cloudfront.net/AccessData_FTK_Imager_4.7.1.exe"
+    "FTK-Imager.exe" = "https://accessdata-ftk-imager.software.informer.com/download/?ca1c4cf-3.2"
     "Espouken.exe" = "https://github.com/spokwn/Tool/releases/download/v1.1.3/espouken.exe"
 }
 
