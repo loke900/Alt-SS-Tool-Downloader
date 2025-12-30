@@ -1,3 +1,6 @@
+# Force TLS 1.2 (important)
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 # Folder name on Desktop
 $folderName = "Downloaded Tools"
 $desktopPath = [Environment]::GetFolderPath("Desktop")
@@ -6,6 +9,11 @@ $downloadPath = Join-Path $desktopPath $folderName
 # Create folder if it doesn't exist
 if (!(Test-Path $downloadPath)) {
     New-Item -ItemType Directory -Path $downloadPath | Out-Null
+}
+
+# Fake browser User-Agent (prevents 403)
+$headers = @{
+    "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 }
 
 # Files to download
@@ -19,7 +27,7 @@ $files = @{
 # Download files
 foreach ($file in $files.GetEnumerator()) {
     $destination = Join-Path $downloadPath $file.Key
-    Invoke-WebRequest -Uri $file.Value -OutFile $destination
+    Invoke-WebRequest -Uri $file.Value -OutFile $destination -Headers $headers -UseBasicParsing
 }
 
 Write-Host "All files downloaded successfully to $downloadPath"
